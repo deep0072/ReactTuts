@@ -1,5 +1,8 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+
+import { Profile } from "./components/profile.js";
+import Gallery from "./components/gallery.js";
 
 function App() {
   return (
@@ -18,6 +21,8 @@ function App() {
           Learn React
         </a>
       </header>
+      <Profile />
+      <Gallery />
     </div>
   );
 }
