@@ -3,6 +3,7 @@ import "./App.css";
 
 import { Profile } from "./components/profile.js";
 import Gallery from "./components/gallery.js";
+import { ChildrenProp } from "./components/childrenProps";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
       </header>
       <Profile />
       <Gallery />
+      <ChildrenProp />
     </div>
   );
 }
