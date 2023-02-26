@@ -4,6 +4,7 @@ import "./App.css";
 import { Profile } from "./components/profile.js";
 import Gallery from "./components/gallery.js";
 import { ChildrenProp } from "./components/childrenProps";
+import { PackingList } from "./components/conditionalRendering";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
       <Profile />
       <Gallery />
       <ChildrenProp />
+      <PackingList />
     </div>
   );
 }
