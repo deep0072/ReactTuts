@@ -5,6 +5,8 @@ import { Profile } from "./components/profile.js";
 import Gallery from "./components/gallery.js";
 import { ChildrenProp } from "./components/childrenProps";
 import { PackingList } from "./components/conditionalRendering";
+import { LogicalPackingList } from "./components/logicalANDoperator.js";
+import { FunctionList } from "./components/mapping.js";
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
       <Gallery />
       <ChildrenProp />
       <PackingList />
+      <LogicalPackingList />
+      <FunctionList />
     </div>
   );
 }
