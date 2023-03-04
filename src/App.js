@@ -1,7 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
 
-
 import { Profile } from "./components/profile.js";
 import Gallery from "./components/gallery.js";
 import { ChildrenProp } from "./components/childrenProps";
@@ -9,6 +8,7 @@ import { PackingList } from "./components/conditionalRendering";
 import { LogicalPackingList } from "./components/logicalANDoperator.js";
 import { FunctionList } from "./components/mapping.js";
 import { PureFunction } from "./components/pureComponents.js";
+import { Toolbar } from "./components/eventHandlers";
 
 function App() {
   return (
@@ -34,6 +34,10 @@ function App() {
       <LogicalPackingList />
       <FunctionList />
       <PureFunction />
+      <Toolbar
+        onPLay={() => alert("playing movie")}
+        onUpload={() => alert("uploading movie")}
+      />
     </div>
   );
 }
