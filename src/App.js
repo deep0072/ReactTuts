@@ -9,6 +9,7 @@ import { LogicalPackingList } from "./components/logicalANDoperator.js";
 import { FunctionList } from "./components/mapping.js";
 import { PureFunction } from "./components/pureComponents.js";
 import { Button } from "./components/eventHandlers";
+import { PlayButton } from "./components/eventHandlerAsProps/event";
 
 function App() {
   return (
@@ -34,7 +35,8 @@ function App() {
       <LogicalPackingList />
       <FunctionList />
       <PureFunction />
-      <Button message = {"oh hi"}/>
+      <Button message={"oh hi"} />
+      <PlayButton movieName={"swades"}></PlayButton>
     </div>
   );
 }
