@@ -1,8 +1,11 @@
-export function Toolbar({ onPLay, onUpload }) {
+function handleClick() {
+  alert("ok then");
+}
+
+export function Button({message}) {
   return (
     <div>
-      <button onClick={onPLay}>play</button>
-      <button onClick={onUpload}>upload</button>
+      <button onClick={()=> alert(message)}>click me</button>
     </div>
   );
 }

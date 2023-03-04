@@ -1,6 +1,5 @@
 /**
  * pure components basically pure functions that do not changes varibale globally.
- *
  * only those variable changes which is define locally. this is also called local mutation
  *
  *
