@@ -2,7 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 
 import { Profile } from "./components/profile.js";
-import Gallery from "./components/gallery.js";
+
 import { ChildrenProp } from "./components/childrenProps";
 import { PackingList } from "./components/conditionalRendering";
 import { LogicalPackingList } from "./components/logicalANDoperator.js";
@@ -10,6 +10,7 @@ import { FunctionList } from "./components/mapping.js";
 import { PureFunction } from "./components/pureComponents.js";
 import { Button } from "./components/eventHandlers";
 import { PlayButton } from "./components/eventHandlerAsProps/event";
+import { Gallery } from "./components/states/render";
 
 function App() {
   return (
@@ -29,7 +30,7 @@ function App() {
         </a>
       </header>
       <Profile />
-      <Gallery />
+
       <ChildrenProp />
       <PackingList />
       <LogicalPackingList />
@@ -37,6 +38,7 @@ function App() {
       <PureFunction />
       <Button message={"oh hi"} />
       <PlayButton movieName={"swades"}></PlayButton>
+      <Gallery />
     </div>
   );
 }
