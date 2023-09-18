@@ -1,0 +1,1 @@
+export const data = ["iron man", "spiderman", "batman", "doctor strange"]
