@@ -5,6 +5,8 @@ import ExampleError  from './tutorial/01-usestate/ExampleError'
 import UseStateBasics from './tutorial/01-usestate/ExampleBasics'
 import { UseStateArray } from './tutorial/01-usestate/UseStateArray'
 import { UseStateWithObjects } from './tutorial/01-usestate/UseStateObjects'
+import { ExampleUseEffect } from './tutorial/02-useEffect/ExampleUseEffect'
+import { ExampleUseEffectApi } from './tutorial/02-useEffect/exampleUseEffectApi'
 
 
 function App() {
@@ -16,7 +18,9 @@ function App() {
     {/* <ExampleError />
     <UseStateBasics />
     <UseStateArray /> */}
-    <UseStateWithObjects />
+    {/* <UseStateWithObjects /> */}
+    <ExampleUseEffect />
+    <ExampleUseEffectApi />
       
     </>
   )

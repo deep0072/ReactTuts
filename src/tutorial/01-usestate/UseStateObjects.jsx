@@ -1,9 +1,9 @@
 import  { useState }from "react"
 
 export  const UseStateWithObjects = ()=>{
-    const [person,setPerson] = useState({name:"Deepak",age:25,hobby:"singing"})
+    const [person,setPerson] = useState({name:"Deepak",age:25,hobby:"nothing"})
     const showPerson = ()=>{
-        setPerson({name:"puneet",age:15, hobby:"figuring out"})
+        setPerson({...person, name:"puneet"})
         document.getElementById('myBtn').onclick = function() {
             document.getElementById('myBtn').innerHTML = 'show deepak';
         }
