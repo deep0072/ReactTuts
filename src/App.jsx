@@ -8,6 +8,8 @@ import { UseStateWithObjects } from './tutorial/01-usestate/UseStateObjects'
 import { ExampleUseEffect } from './tutorial/02-useEffect/ExampleUseEffect'
 import { ExampleUseEffectApi } from './tutorial/02-useEffect/exampleUseEffectApi'
 import { MultipleReturnsUseEffect } from './tutorial/02-useEffect/MultipleReturnsUseEffect'
+import TernaryOperator from './tutorial/03-conditional/Ternary'
+import ToggleChallenge from './tutorial/03-conditional/ToggleChallenge'
 
 
 function App() {
@@ -23,6 +25,8 @@ function App() {
     {/* <ExampleUseEffect />
     <ExampleUseEffectApi /> */}
     <MultipleReturnsUseEffect/>
+    <TernaryOperator />
+    <ToggleChallenge />
       
     </>
   )
