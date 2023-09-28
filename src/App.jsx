@@ -11,6 +11,9 @@ import { MultipleReturnsUseEffect } from './tutorial/02-useEffect/MultipleReturn
 import TernaryOperator from './tutorial/03-conditional/Ternary'
 import ToggleChallenge from './tutorial/03-conditional/ToggleChallenge'
 import UserChallenge from './tutorial/03-conditional/UserChallenge'
+import {Navbar}  from './tutorial/04-folderstructure/Navbar'
+import { Homepage,About } from './tutorial/04-folderstructure/Pages'
+import Example from './tutorial/04-folderstructure/Example'
 
 
 function App() {
@@ -19,7 +22,7 @@ function App() {
   return (
     <>
     <h1>vite react </h1>
-    {/* <ExampleError />
+    {/* <ExampleError /> 
     <UseStateBasics />
     <UseStateArray /> */}
     {/* <UseStateWithObjects /> */}
@@ -28,7 +31,11 @@ function App() {
     {/* <MultipleReturnsUseEffect/>
     <TernaryOperator />
     <ToggleChallenge /> */}
-    <UserChallenge />
+    {/* <UserChallenge /> */}
+    <Navbar />
+    <Homepage />
+    <About />
+    <Example />
       
     </>
   )
