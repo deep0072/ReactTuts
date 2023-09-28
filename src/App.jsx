@@ -14,6 +14,7 @@ import UserChallenge from './tutorial/03-conditional/UserChallenge'
 import {Navbar}  from './tutorial/04-folderstructure/Navbar'
 import { Homepage,About } from './tutorial/04-folderstructure/Pages'
 import Example from './tutorial/04-folderstructure/Example'
+import List from './tutorial/05-leverage-Javascript/starter'
 
 
 function App() {
@@ -32,10 +33,11 @@ function App() {
     <TernaryOperator />
     <ToggleChallenge /> */}
     {/* <UserChallenge /> */}
-    <Navbar />
+    {/* <Navbar />
     <Homepage />
     <About />
-    <Example />
+    <Example /> */}
+    <List />
       
     </>
   )
