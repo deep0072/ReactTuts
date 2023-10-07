@@ -16,6 +16,9 @@ import { Homepage,About } from './tutorial/04-folderstructure/Pages'
 import Example from './tutorial/04-folderstructure/Example'
 import List from './tutorial/05-leverage-Javascript/starter'
 
+import ControlledInputs from './tutorial/06-Forms/UserChallange'
+import MultipleInputs from './tutorial/06-Forms/MultipleInputs'
+
 
 function App() {
 
@@ -37,7 +40,9 @@ function App() {
     <Homepage />
     <About />
     <Example /> */}
-    <List />
+    {/* <List /> */}
+    {/* <ControlledInputs />   */}
+    <MultipleInputs />
       
     </>
   )
