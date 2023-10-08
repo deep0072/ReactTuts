@@ -18,6 +18,8 @@ import List from './tutorial/05-leverage-Javascript/starter'
 
 import ControlledInputs from './tutorial/06-Forms/UserChallange'
 import MultipleInputs from './tutorial/06-Forms/MultipleInputs'
+import FormDataApi from './tutorial/06-Forms/FormDataApi/FormDataApi'
+// import OtherInputs from './tutorial/06-Forms/OtherInputs'
 
 
 function App() {
@@ -42,7 +44,10 @@ function App() {
     <Example /> */}
     {/* <List /> */}
     {/* <ControlledInputs />   */}
-    <MultipleInputs />
+    {/* <MultipleInputs /> */}
+    {/* <OtherInputs /> */}
+    <FormDataApi />
+    
       
     </>
   )
