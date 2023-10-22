@@ -19,6 +19,10 @@ import List from './tutorial/05-leverage-Javascript/starter'
 import ControlledInputs from './tutorial/06-Forms/UserChallange'
 import MultipleInputs from './tutorial/06-Forms/MultipleInputs'
 import FormDataApi from './tutorial/06-Forms/FormDataApi/FormDataApi'
+import UseRefBasics from './tutorial/07-UseRef/UseRefBasics'
+import {WithoutUseContextApi,UseContextExample}  from './tutorial/08-useContext/'
+
+
 // import OtherInputs from './tutorial/06-Forms/OtherInputs'
 
 
@@ -46,7 +50,10 @@ function App() {
     {/* <ControlledInputs />   */}
     {/* <MultipleInputs /> */}
     {/* <OtherInputs /> */}
-    <FormDataApi />
+    {/* <FormDataApi /> */}
+    <UseRefBasics />
+    {/* <WithoutUseContextApi /> */}
+    <UseContextExample/>
     
       
     </>
