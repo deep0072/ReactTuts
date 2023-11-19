@@ -1,7 +1,9 @@
 import React, { Children } from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom'
-import { About,Home,Contact } from './components'
+import { About,Home,Contact, User, Github } from './components'
+import { githubLoadData } from './components/Github/Github'
+
 
 import './index.css'
 import Layout from './Layout'
@@ -27,6 +29,9 @@ const router = createBrowserRouter(
       <Route path='' element={<Home/>}/>
       <Route path='Contact' element={<Contact/>}/>
       <Route path='About' element={<About/>}/>
+      <Route path='user/:userId' element={<User/>}/>
+      {/* here loader will call the function already and cached it when we go to github. it is used in mostly in api calls   */}
+      <Route loader={githubLoadData} path='github' element={<Github />}/>
    
      
     
