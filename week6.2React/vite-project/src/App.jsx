@@ -4,6 +4,7 @@ import axios from "axios";
 import UseMemo from "./UseMemo";
 import UseCallBack from "./UseCallBack";
 import Memo from "./Memo";
+import CustomHook from "./CustomHook";
 
 export default function App() {
   const [counter, setCounter] = useState(0);
@@ -15,8 +16,9 @@ export default function App() {
 
   return (
     <div>
+      <CustomHook />
       {/* <Memo /> */}
-      <UseCallBack />
+      {/* <UseCallBack /> */}
       {/* <UseMemo /> */}
       {/* {counter}
       <button onClick={handleClick}>1</button>
@@ -30,19 +32,19 @@ export default function App() {
   );
 }
 
-function Todo({ count }) {
-  const [todo, setTodos] = useState({});
-  useEffect(() => {
-    axios
-      .get(`https://sum-server.100xdevs.com/todo?id=${count}`)
-      .then((res) => {
-        setTodos(res.data.todo);
-        console.log(res.data.todo)
-      });
-  }, [count]);
-  return (
-    <div>
-         <h1>{todo?.title}</h1>
-    </div>
-  );
-}
+// function Todo({ count }) {
+//   const [todo, setTodos] = useState({});
+//   useEffect(() => {
+//     axios
+//       .get(`https://sum-server.100xdevs.com/todo?id=${count}`)
+//       .then((res) => {
+//         setTodos(res.data.todo);
+//         console.log(res.data.todo)
+//       });
+//   }, [count]);
+//   return (
+//     <div>
+//          <h1>{todo?.title}</h1>
+//     </div>
+//   );
+// }
