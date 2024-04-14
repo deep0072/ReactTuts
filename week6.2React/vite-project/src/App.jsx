@@ -5,6 +5,7 @@ import UseMemo from "./UseMemo";
 import UseCallBack from "./UseCallBack";
 import Memo from "./Memo";
 import CustomHook from "./CustomHook";
+import UseRef from "./UseRef";
 
 export default function App() {
   const [counter, setCounter] = useState(0);
@@ -16,7 +17,8 @@ export default function App() {
 
   return (
     <div>
-      <CustomHook />
+      <UseRef />
+      {/* <CustomHook /> */}
       {/* <Memo /> */}
       {/* <UseCallBack /> */}
       {/* <UseMemo /> */}
