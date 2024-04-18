@@ -27,15 +27,21 @@ function MainApp(){
 
 
 
-  useEffect(() => {
-    axios.get("https://sum-server.100xdevs.com/notifications")
-      .then(res=>{
-        setNotifications(res.data)
-      })
+  // useEffect(() => {
+  //   axios.get("https://sum-server.100xdevs.com/notifications")
+  //     .then(res=>{
+  //       setNotifications(res.data)
+  //     })
+
+  // // 1. well what will happen in above code it will fetch
+  // // 2. the data from backend and update the notiFication atom.
+  // // 3. meanwhile data fetching the default value of atom will be rendered to frontend 
+  // // 4. so to avoid this we need to use async data queries
 
   
     
-  }, [])
+  // }, [])
+
 
   
   
