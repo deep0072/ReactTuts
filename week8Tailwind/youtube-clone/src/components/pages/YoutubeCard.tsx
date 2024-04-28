@@ -2,7 +2,7 @@ import React from "react";
 
 const YoutubeCard = ( props:any) => {
   return (
-    <div>
+    <div className="p-3 cursor-pointer">
      
       <img src="/beastImage.jpg" alt=""  className="rounded-xl pl-5"/>
       <div className="grid grid-cols-12 pt-5 pl-5">

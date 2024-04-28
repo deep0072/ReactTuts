@@ -57,6 +57,10 @@ const VIDEOS = [
     },
   ];
 
+  // grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 ==>
+  // this means when screen size cross the md (medium) breakpoint then col will be shown 2 and if cross the larger screen
+  // size then col will be 4 otherwise col 1
+  
 const VideoGrid = () => {
   return (
     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4'>
