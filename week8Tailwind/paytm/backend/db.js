@@ -33,6 +33,21 @@ const userSchema = new mongoose.Schema({
 // Create a model from the schema
 const User = mongoose.model("User", userSchema);
 
+const bankSchema  = new mongoose.Schema({
+  userId:{
+    type:mongoose.Schema.Types.ObjectId,
+    ref: 'User' ,// kind of foreign key that will store  object id
+    required:true
+  },
+
+  balance:{
+    type:Number,
+    required:true
+
+  }
+
+})
+
 module.exports = {
   User,
 };

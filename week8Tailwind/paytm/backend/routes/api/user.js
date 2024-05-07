@@ -2,7 +2,9 @@ const express = require("express")
 const {User} = require("../../db")
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET } = require("../config");
-const zod = require("zod") //  acts very similarly to serializers in Django REST 
+const zod = require("zod"); //  acts very similarly to serializers in Django REST 
+const { authMiddleware } = require("../../middleware");
+const { route } = require(".");
 //Framework during deserialization, providing data validation for incoming requests
 const router = express.Router()
 const signUpSchema = zod.object({
@@ -11,9 +13,9 @@ const signUpSchema = zod.object({
     firstName:zod.string(),
     lastName:zod.string()
 })
-router.post("/signup" ,async (res,req)=>{
+router.post("/signup" ,async (req,res)=>{
     const body = req.body
-    const success = signUpSchema.safeParse(body)
+    const {success} = signUpSchema.safeParse(body)
     if (!success ){
         return res.status(411).json({
             message:"INCORRECT INPUTS"
@@ -42,14 +44,14 @@ router.post("/signup" ,async (res,req)=>{
 
 })
 
-
-router.post("/signin", async (res,req)=>{
+const signingBody = zod.object({
+    username: zod.string(),
+    password: zod.string()
+})
+router.post("/signin", async (req,res)=>{
     const body = req.body
-    const signingBody = zod.object({
-        username: zod.string(),
-        password: zod.string()
-    })
-    const success =  signingBody.safeParse(body)
+   
+    const {success} =  signingBody.safeParse(body)
 
     if (!success) {
         return res.status(411).json({
@@ -76,6 +78,58 @@ router.post("/signin", async (res,req)=>{
     })
 
   
+
+})
+
+const updateBody = zod.object({
+    password:zod.string(),
+    firstName:zod.string(),
+    lastName:zod.string()
+})
+
+router.put("/", authMiddleware, async(req,res)=>{
+    const body = req.body
+    const {success} = updateBody.safeParse(body)
+    if (!success){
+        res.status(411).json({
+            message:"INCORRECT REQUEST"
+        })
+    }
+
+   await User.updateOne({_id:req.userId}, body) // will update first true condition
+   res.status(200).json({
+    message:"updated successfully"
+   })
+    
+
+
+})
+
+route.get( "/bulk", async(req,res)=>{
+    const filter = req.query.filter || ""
+    const users = await User.find({
+        $or:[{
+            firstName:{
+                "$regex":filter
+            },
+            lastName:{
+                "$regex": filter
+            }
+        }]
+    })
+
+    res.json({
+        user: users.map(user=>({
+            username:user.username,
+            firstName:user.firstName,
+            lastName:user.lastName,
+            _id:user._id
+
+
+        }))
+    })
+    
+
 
 })
 module.exports = router
