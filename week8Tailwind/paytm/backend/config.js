@@ -1,2 +1,4 @@
-const JWT = "deepak_secret"
-module.exports = JWT
+//backend/config.js
+module.exports = {
+	JWT_SECRET: "your-jwt-secret"
+}

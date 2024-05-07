@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost:27017/paytm")
+const uri = "mongodb://0.0.0.0:27017/paytm";
+mongoose.connect(uri)
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
@@ -30,10 +31,9 @@ const userSchema = new mongoose.Schema({
   },
 });
 
-// Create a model from the schema
-const User = mongoose.model("User", userSchema);
 
-const bankSchema  = new mongoose.Schema({
+
+const accountSchema = new mongoose.Schema({
   userId:{
     type:mongoose.Schema.Types.ObjectId,
     ref: 'User' ,// kind of foreign key that will store  object id
@@ -48,6 +48,13 @@ const bankSchema  = new mongoose.Schema({
 
 })
 
+// Create a model from the schema
+const User = mongoose.model("User", userSchema);
+
+// Create a model from the bankSchema
+const Account = mongoose.model("Account", accountSchema);
+
 module.exports = {
   User,
+  Account
 };

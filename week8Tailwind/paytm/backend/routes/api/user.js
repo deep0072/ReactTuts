@@ -1,10 +1,10 @@
 const express = require("express")
-const {User} = require("../../db")
+const {User, Account} = require("../../db")
 const jwt = require("jsonwebtoken");
-const { JWT_SECRET } = require("../config");
+const { JWT_SECRET } = require("../../config");
 const zod = require("zod"); //  acts very similarly to serializers in Django REST 
 const { authMiddleware } = require("../../middleware");
-const { route } = require(".");
+
 //Framework during deserialization, providing data validation for incoming requests
 const router = express.Router()
 const signUpSchema = zod.object({
@@ -23,13 +23,17 @@ router.post("/signup" ,async (req,res)=>{
     }
 
     const user = await User.findOne({username:body.username})
-    if (user._id){
+    if (user){
         return res.status(411).json({
             message:"USER ALREADY EXISTS"
         })
     }
     const dbUser = await User.create(body)
     const userId = dbUser._id;
+    await Account.create({
+        userId,
+        balance:1+Math.random()*1000
+    })
     const token = jwt.sign({
         userId
 
@@ -105,7 +109,7 @@ router.put("/", authMiddleware, async(req,res)=>{
 
 })
 
-route.get( "/bulk", async(req,res)=>{
+router.get( "/bulk", async(req,res)=>{
     const filter = req.query.filter || ""
     const users = await User.find({
         $or:[{
