@@ -41,4 +41,41 @@ router.post("/signup" ,async (res,req)=>{
 
 
 })
+
+
+router.post("/signin", async (res,req)=>{
+    const body = req.body
+    const signingBody = zod.object({
+        username: zod.string(),
+        password: zod.string()
+    })
+    const success =  signingBody.safeParse(body)
+
+    if (!success) {
+        return res.status(411).json({
+            message:"INCORRECT REQUEST"
+        })
+    }
+
+    const user  = User.findOne({
+        username:body.username,
+        password:body.password
+    })
+
+    if (user) {
+        const token = jwt.sign({
+            userId:user._id
+        },JWT_SECRET)
+        res.json({
+            token:token
+        })
+        return
+    }
+    res.status(411).json({
+        message:"ERROR WHILE LOGGING IN"
+    })
+
+  
+
+})
 module.exports = router
