@@ -5,10 +5,11 @@ const { authMiddleware } = require("../../middleware");
 const router = express.Router();
 
 router.get("/balance", authMiddleware, async (req,res)=>{
+    console.log(req.userId,"user id")
     const account = req.userId
     if (account){
         const user = await Account.findOne({
-            userId:account.userId
+            userId:account
         })
 
         res.json({
@@ -19,12 +20,15 @@ router.get("/balance", authMiddleware, async (req,res)=>{
 })
 
 router.post("/transfer",authMiddleware,async (req,res)=>{
-    //first create session for atomicity
+
+    try {
+            //first create session for atomicity
     // atomicity is used to keep data consistent in db
     const session = await mongoose.startSession()
     // start transaction
     session.startTransaction()
     const {amount,to} = req.body
+    console.log(req.body)
 
     //fetch the account withing txn
         // Fetch the accounts within the transaction
@@ -53,6 +57,11 @@ router.post("/transfer",authMiddleware,async (req,res)=>{
     res.json({
         message:"Transfer successful"
     })
+
+
+    }catch(error){
+        console.log(error)
+    }
 
 
 })

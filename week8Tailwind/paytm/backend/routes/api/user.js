@@ -57,16 +57,36 @@ router.post("/signin", async (req,res)=>{
    
     const {success} =  signingBody.safeParse(body)
 
+
     if (!success) {
         return res.status(411).json({
             message:"INCORRECT REQUEST"
         })
     }
 
-    const user  = User.findOne({
+    console.log(body, "body")
+
+    const user  = await User.findOne({
         username:body.username,
         password:body.password
     })
+
+   
+
+   
+
+    console.log("password", body.password)
+    if (user){
+        if (body.password!= user.password){
+            return res.status(403).json({
+                message:"incorrect password"
+            })
+    
+        }
+
+    }
+  
+   
 
     if (user) {
         const token = jwt.sign({
@@ -111,16 +131,33 @@ router.put("/", authMiddleware, async(req,res)=>{
 
 router.get( "/bulk", async(req,res)=>{
     const filter = req.query.filter || ""
-    const users = await User.find({
-        $or:[{
-            firstName:{
-                "$regex":filter
-            },
-            lastName:{
+    console.log("filter",filter)
+    // const users = await User.find({
+    //     $or: [{
+    //         firstName:{
+    //             "$regex":filter
+    //         },
+    //         lastName:{
+    //             "$regex": filter
+    //         }
+    //     }]
+    // })
+     const users = await User.find({
+        $or: [{
+            firstName: {
                 "$regex": filter
             }
-        }]
+        },{
+            lastName: {
+                "$regex": filter
+            }
+        }
+    ]
     })
+   
+    
+
+
 
     res.json({
         user: users.map(user=>({
@@ -136,4 +173,29 @@ router.get( "/bulk", async(req,res)=>{
 
 
 })
+
+// router.get("/bulk", async (req, res) => {
+//     const filter = req.query.filter || "";
+
+//     const users = await User.find({
+//         $or: [{
+//             firstName: {
+//                 "$regex": filter
+//             }
+//         }, {
+//             lastName: {
+//                 "$regex": filter
+//             }
+//         }]
+//     })
+
+//     res.json({
+//         user: users.map(user => ({
+//             username: user.username,
+//             firstName: user.firstName,
+//             lastName: user.lastName,
+//             _id: user._id
+//         }))
+//     })
+// })
 module.exports = router
