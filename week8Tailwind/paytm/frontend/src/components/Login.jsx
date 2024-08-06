@@ -10,10 +10,10 @@ import InputBox from "./InputBox";
 import SubHeader from "./SubHeader";
 
 const Login = () => {
-  const [username,setUserName] = useState("")
-  const [password, setPassword] = useState("")
+  const [username, setUserName] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const setTokenAtom = useSetRecoilState(mytokenAtom)
+  const setTokenAtom = useSetRecoilState(mytokenAtom);
   return (
     <div className="flex bg-slate-300 h-screen  justify-center">
       <div className="flex flex-col justify-center">
@@ -21,25 +21,41 @@ const Login = () => {
           <Header label="Login" />
           <SubHeader label={"Enter your information to login an account"} />
 
-          <InputBox onChange={(e)=>setUserName(e.target.value)} label="Email" placeholder="xyz@mail.com" />
-          <InputBox onChange={(e)=>setPassword(e.target.value)} label="Password" placeholder="*****" />
-          <ButtonComponent onClick={async ()=>{
-            const response =  await axios.post("http://localhost:3000/api/v1/user/signin",
-           {
-              username,
-              password
+          <InputBox
+            onChange={(e) => setUserName(e.target.value)}
+            label="Email"
+            placeholder="xyz@mail.com"
+          />
+          <InputBox
+            onChange={(e) => setPassword(e.target.value)}
+            label="Password"
+            placeholder="*****"
+          />
+          <ButtonComponent
+            onClick={async () => {
+              console.log({
+                email:username,
+                password,
+              })
+              const response = await axios.post(
+                "http://localhost:3000/login",
 
-            }
-            
-            
-            
-            )
-           
-            localStorage.setItem("token", response.data.token)
-            setTokenAtom(true)
-            navigate("/dashboard")
+                {
+                  email:username,
+                  password,
+                },  
 
-          }} label={"Login"} />
+                {
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                }
+              );
+              localStorage.setItem("token", response.data.token);
+              navigate("/dashboard");
+            }}
+            label={"Login"}
+          />
           <BottomWarning
             label={"if you dont have any account ?"}
             buttonText={"Sign up"}

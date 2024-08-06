@@ -1,20 +1,25 @@
 import axios from "axios";
 import { useState } from "react";
 
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 const SendMoney = () => {
   const [amount, setAmount] = useState();
-  const [serachParams] = useSearchParams();
-  const id = serachParams.get("id");
-  const name = serachParams.get("name");
+  const [searchParam] = useSearchParams();
+  const navigate = useNavigate();
+
+
+  const id = searchParam.get("id");
+  const name = searchParam.get("name");
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post("http://localhost:3000/api/v1/account/transfer",
+    await axios.post("http://localhost:3000/transfer",
         {
           amount,
-          to: id
+          to: id,
+         
+
         },
         {
           headers:{
@@ -23,6 +28,11 @@ const SendMoney = () => {
           }
         }
       );
+
+      navigate("/success", {state: { 
+        amount: amount,
+   
+      }} )
   }
 
   return (

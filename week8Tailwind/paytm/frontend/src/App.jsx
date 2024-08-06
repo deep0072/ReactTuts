@@ -10,6 +10,7 @@ const AppBar = lazy(() => import("./components/AppBar"));
 import {
   RecoilRoot,
 } from "recoil";
+import PaymentConfirmation from "./components/PaymentConfirmation";
 
 function App() {
   return (
@@ -40,6 +41,14 @@ function App() {
               element={
                 <Suspense fallback={"loading...."}>
                   <SendMoney />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/success"
+              element={
+                <Suspense fallback={"loading...."}>
+                  <PaymentConfirmation />
                 </Suspense>
               }
             />

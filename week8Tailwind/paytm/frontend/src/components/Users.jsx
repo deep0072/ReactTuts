@@ -7,12 +7,18 @@ export const Users = () => {
   // Replace with backend call
   const [users, setUsers] = useState([]);
   const [filter, setFilter] = useState("");
+  
 
   useEffect(()=>{
-    axios.get("http://localhost:3000/api/v1/user/bulk?filter=" + filter)
+    let token  = localStorage.getItem("token")
+    console.log(token)
+    axios.get("http://localhost:3000/bulk?filter=" + filter, {headers: {
+
+      "Authorization":"Bearer " + localStorage.getItem("token")
+    }})
         .then(response=>{
             setUsers(response.data.user)
-        })
+        },)
   },[filter])
 
   return (
@@ -30,6 +36,7 @@ export const Users = () => {
       </div>
       <div>
         {users.map((user) => (
+          console.log(user, "user"),
           <User user={user} />
         ))}
       </div>
@@ -45,12 +52,12 @@ function User({ user }) {
       <div className="flex">
         <div className="rounded-full h-12 w-12 bg-slate-200 flex justify-center mt-1 mr-2">
           <div className="flex flex-col justify-center h-full text-xl">
-            {user.firstName[0]}
+            {user.firstname[0]}
           </div>
         </div>
         <div className="flex flex-col justify-center h-ful">
           <div>
-            {user.firstName} {user.lastName}
+            {user.firstname} {user.lastName}
           </div>
         </div>
       </div>

@@ -8,7 +8,7 @@ import { Users } from './Users'
 
 const Dashboard = () => {
 
-  const tokenAtom = useRecoilValue(mytokenAtom)
+  const tokenAtom = localStorage.getItem("token")
   const navigate = useNavigate()
   useEffect(()=>{
     !tokenAtom && navigate("/signin")
